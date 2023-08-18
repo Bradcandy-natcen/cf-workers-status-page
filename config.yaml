@@ -1,6 +1,6 @@
 settings:
-  title: 'Status Page'
-  url: 'https://status-page.eidam.dev' # used for Slack messages
+  title: 'Natcen Status Page'
+  url: 'https://status-page.natcen.ac.uk' # used for Slack messages
   logo: logo-192x192.png # image in ./public/ folder
   daysInHistogram: 90 # number of days you want to display in histogram
   collectResponseTimes: true # collects avg response times from CRON locations
@@ -15,10 +15,10 @@ settings:
   dayInHistogramNotOperational: ' incident(s)' # xx incident(s) recorded
 
 monitors:
-  - id: workers-cloudflare-com # unique identifier
-    name: workers.cloudflare.com
-    description: 'You write code. They handle the rest.' # default=empty
-    url: 'https://workers.cloudflare.com/' # URL to fetch
+  - id: natcen.ac.uk # unique identifier
+    name: natcen.ac.uk
+    description: 'Main Natcen Website' # default=empty
+    url: 'natcen.ac.uk' # URL to fetch
     method: GET # default=GET
     expectStatus: 200 # operational status, default=200
     followRedirect: false # should fetch follow redirects, default=false
@@ -30,10 +30,41 @@ monitors:
     url: 'https://www.cloudflare.com'
     method: GET
     expectStatus: 200
-    linkable: true # allows the title to be a link, default=true
+    followRedirect: false
+    linkable: true
 
-  - id: blog-cloudflare-com
-    name: The Cloudflare Blog
-    url: 'https://blog.cloudflare.com/'
+  - id: survey.natcen.ac.uk
+    description: 'Main Natcen Survey Website'
+    name: survey.natcen.ac.uk
+    url: 'https://survey.natcen.ac.uk/'
     method: GET
     expectStatus: 200
+    followRedirect: false
+    linkable: true
+
+  - id: mysurvey.natcen.ac.uk
+    description: 'Natcen Survey Website'
+    name: mysurvey.natcen.ac.uk
+    url: 'https://natcen.ac.uk/'
+    method: GET
+    expectStatus: 200
+    followRedirect: false
+    linkable: true
+    
+  - id: bsa.natcen.ac.uk
+    description: 'British Social Attitudes Study'
+    name: bsa.natcen.ac.uk
+    url: 'https://bsa.natcen.ac.uk/'
+    method: GET
+    expectStatus: 200
+    followRedirect: false
+    linkable: true
+
+  - id: response_pure360_com # unique identifier
+    name: response.pure360.com
+    description: 'Pure360's internet routing to their AWS infrastructure' # default=empty
+    url: 'response.pure360.com' # URL to fetch
+    method: GET # default=GET
+    expectStatus: 200 # operational status, default=200
+    followRedirect: false # should fetch follow redirects, default=false
+    linkable: false # allows the title to be a link, default=true
